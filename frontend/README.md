@@ -11,4 +11,4 @@ Build the Code-->
 
 1. `npm run build`
 
-   Work as assigned to you.
+   Start your Work as assigned to you.

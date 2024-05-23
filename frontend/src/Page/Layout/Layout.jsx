@@ -8,7 +8,7 @@ function Layout({ children }) {
         <div className='bg-white'>
             <Navbar />
             <div className="content">
-                {children} 
+                {children}
             </div>
             <Footer />
         </div>
