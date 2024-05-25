@@ -7,7 +7,7 @@ function Layout({ children }) {
     return (
         <div className='bg-white'>
             <Navbar />
-            <div className="content">
+            <div className="content flex items-center justify-center">
                 {children}
             </div>
             <Footer />
