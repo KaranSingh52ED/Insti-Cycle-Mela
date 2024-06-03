@@ -18,6 +18,8 @@ MONGODB_URI= "mongodb+srv://prakash:TqkQWuqT31lpt3a8@cluster0.5xdpaqf.mongodb.ne
 PORT= 8080
 
 
+to run use : npm run dev
+
 */
 
 
