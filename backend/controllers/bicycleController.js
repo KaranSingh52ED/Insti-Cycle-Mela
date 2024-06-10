@@ -38,3 +38,17 @@ exports.createBicycle = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+exports.addBicycles = async (req, res) => {
+    try {
+        const bicycles = req.body;
+        if (!Array.isArray(bicycles)) {
+            return res.status(400).send('Request body should be an array of bicycles');
+        }
+
+        const result = await Bicycle.insertMany(bicycles);
+        res.status(201).send(result);
+    } catch (err) {
+        res.status(500).send('Server Error');
+    }
+};
