@@ -2,11 +2,11 @@ import React from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
 import Navbar from '../../components/Navbar/Navbar';
+import Layout from '../Layout/Layout';
 
 const ContactUs = () => {
     return (
-        <div>
-            <Navbar />
+        <Layout>
             <main className="pt-28 p-8 text-center">
                 <h2 className="text-2xl mb-8">Contact Us</h2>
                 <div className="flex flex-col items-center">
@@ -61,7 +61,7 @@ const ContactUs = () => {
                     </form>
                 </div>
             </main>
-        </div>
+        </Layout>
     );
 }
 

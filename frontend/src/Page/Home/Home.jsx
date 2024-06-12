@@ -55,7 +55,7 @@ const Home = () => {
         <nav className="fixed top-[4rem] left-0 w-full bg-gray-800 text-white z-10 flex justify-between items-center px-10 py-4">
           <div className="flex items-center gap-4">
             <h1 className="text-lg font-semibold">Cycle Mela</h1>
-          
+
           </div>
           <FaFilter
             className="h-7 w-7 cursor-pointer"
@@ -194,9 +194,8 @@ const Home = () => {
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index}
-              className={`mx-2 px-4 py-2 border rounded ${
-                page === index + 1 ? "bg-gray-300" : "bg-white"
-              }`}
+              className={`mx-2 px-4 py-2 border rounded ${page === index + 1 ? "bg-gray-300" : "bg-white"
+                }`}
               onClick={() => handlePageChange(index + 1)}
             >
               {index + 1}
