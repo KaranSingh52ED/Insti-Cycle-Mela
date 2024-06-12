@@ -1,12 +1,9 @@
 import React from 'react'
-
-import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
+import Layout from './../Layout/Layout';
 
 const AboutUs = () => {
-    return (
-        <div>
-      <Navbar />
+  return (
+    <Layout>
       <main className="pt-28 p-8 text-center mt-12">
         <h1 className="text-2xl font-bold mb-8">About Us</h1>
         <div className="w-full  bg-gray-100 p-8 rounded-lg shadow-md mb-8">
@@ -56,9 +53,8 @@ const AboutUs = () => {
           </section>
         </div>
       </main>
-      <Footer />
-    </div>
-    );
+    </Layout>
+  );
 };
 
 export default AboutUs;

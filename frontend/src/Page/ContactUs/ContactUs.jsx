@@ -1,7 +1,6 @@
 import React from 'react';
 import { IoIosSearch } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
-import Navbar from '../../components/Navbar/Navbar';
 import Layout from '../Layout/Layout';
 
 const ContactUs = () => {

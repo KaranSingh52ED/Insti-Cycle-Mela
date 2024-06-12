@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='w-full h-30 gap-4 p-5 justify-around bg-black text-white flex flex-col items-center justify-center'>
+    <div className='w-full h-30 gap-4 p-5  bg-black text-white flex flex-col items-center justify-center'>
       <div className='flex gap-8'>
         <a href="/about" className='text-gray-400 hover:text-white'>About</a>
         <a href="/contact" className='text-gray-400 hover:text-white'>Contact</a>

@@ -1,10 +1,11 @@
 import React from 'react'
+import Layout from '../Layout/Layout'
 
 const FAQ = () => {
     return (
-        <div>
-            FAQ Page
-        </div>
+        <Layout>
+            Faq Page
+        </Layout>
     )
 }
 

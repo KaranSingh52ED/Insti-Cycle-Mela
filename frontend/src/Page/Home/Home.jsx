@@ -11,7 +11,7 @@ const Home = () => {
   const [sort, setSort] = useState("dateAdded:desc");
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(8);
 
   useEffect(() => {
     fetchBicycles();
