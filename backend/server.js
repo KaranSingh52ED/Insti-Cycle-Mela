@@ -14,7 +14,7 @@ dot env structure:
 
 add the following for now:
 
-MONGODB_URI= "your mongodb uri"
+MONGODB_URI = "mongodb+srv://Insti-Cycle-Mela:wNpdsHJWBFBL6j8g@cluster0.wsm5f91.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 PORT= 8080
 
 
