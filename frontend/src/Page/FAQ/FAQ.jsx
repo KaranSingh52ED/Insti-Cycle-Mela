@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from '../Layout/Layout';
 import { useState } from 'react';
-import img1 from "./assets/5672795-removebg-preview.png";
-import img2 from "./assets/18939283816bc18797283b6b249f0401.jpg";
+import img1 from "../../assets/5672795-removebg-preview.png";
+import img2 from "../../assets/18939283816bc18797283b6b249f0401.jpg";
 import './FAQ.css';
 
 

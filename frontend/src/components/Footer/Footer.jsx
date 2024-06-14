@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <div className='w-full h-30 gap-4 p-5  bg-black text-white flex flex-col items-center justify-center'>
       <div className='flex gap-8'>
+        <a href="/" className='text-gray-400 hover:text-white'>Home</a>
         <a href="/about" className='text-gray-400 hover:text-white'>About</a>
         <a href="/contact" className='text-gray-400 hover:text-white'>Contact</a>
         <a href="/faq" className='text-gray-400 hover:text-white'>FAQ</a>
