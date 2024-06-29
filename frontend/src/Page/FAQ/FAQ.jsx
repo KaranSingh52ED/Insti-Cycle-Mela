@@ -1,42 +1,33 @@
 import React from 'react';
-import Layout from '../Layout/Layout';
 import { useState } from 'react';
-import img1 from "../../assets/5672795-removebg-preview.png";
-import img2 from "../../assets/18939283816bc18797283b6b249f0401.jpg";
-import './FAQ.css';
-
-
-
+import firstone from './../../assets/firstone.jpg';
 function WelcomeMessage() {
-
     return (
-        <div className="WelcomeMessage">
-            <div class="header">
-                <h1 class="header-title">FAQ</h1>
-                <p class="header-desc">Frequently Ask Questions</p>
-                <div class="search">
-                    <input type="text" placeholder="Search...." />
-                    <button>Search</button>
+        <div className="WelcomeMessage ">
+            <div className="header h-96 bg-cover bg-center flex flex-col items-center p-10 mx-6 my-6 rounded-2xl " style={{ backgroundImage: `url(${firstone})` }}>
+                <h1 className="header-title text-5xl font-bold mb-2 text-white">FAQ</h1>
+                <p className="header-desc text-lg text-center mt-2 text-white">Frequently Ask Questions</p>
+                <div className="search w-3/4 h-12 bg-white mt-5 rounded-full flex justify-between p-1">
+                    <input className="w-4/5 h-full p-2 bg-transparent border-none text-base" type="text" placeholder="Search...." />
+                    <button className="w-1/5 min-w-max h-full bg-yellow-500 text-white rounded-full hover:bg-black">Search</button>
                 </div>
             </div>
-
         </div>
     );
 }
+
 function Neck() {
     return (
-        <div class="faq">
-            <div class="faq-name">
-                <h1 class="faq-header">Have<br />Questions?</h1>
-                <img className="faq-img" src={img1} alt="" />
+        <div className="faq w-full  flex justify-center items-center flex-col p-3">
+            <div className="faq-name flex-1/2 pt-24 flex flex-col w-1/2 justify-center ml-10">
+                <h1 className="faq-header text-5xl font-bold ml-12 mb-0">Have<br />Questions?</h1>
+                <img className="faq-img w-full max-w-md h-auto mt-0" src="secondone.png" alt="" />
             </div>
         </div>
     );
 }
 
-
 const data = [
-
     {
         question: 'What should I look for when buying a used bicycle?',
         answer: 'Check the overall condition of the bike, including the frame, tires, brakes, and gears. If possible, arrange to see the bike in person and take it for a test ride. Don"t hesitate to ask the seller about the bike"s history and any maintenance it has undergone.',
@@ -79,39 +70,35 @@ const data = [
     }
 ]
 
-
 const FAQ = () => {
-    const [selected, setSelected] = useState(null)
+    const [selected, setSelected] = useState(null);
     const toggle = (i) => {
         if (selected == i) {
-            return setSelected(null)
-
+            return setSelected(null);
         }
-
-        setSelected(i)
+        setSelected(i);
     }
+
     return (
-        <Layout>
-            <div className="abc">
-                <div className="left"><WelcomeMessage /></div>
-                <div className="footer">
-                    <div className="Leftbottom"><Neck /></div>
-                    <div className="accordian">
-                        {data.map((item, i) => (
-                            <div className="main" key={i}>
-                                <div className="title" onClick={() => toggle(i)}>
-                                    <h2>{item.question}</h2>
-                                    <span>{selected == i ? '<' : '>'}</span>
-                                </div>
-                                <div className={selected == i ? 'content show' : 'content'}>{item.answer}</div>
+
+        <div className="abc flex flex-col">
+            <div className="left"><WelcomeMessage /></div>
+            <div className="footer flex flex-row">
+                <div className="Leftbottom w-1/2"><Neck /></div>
+                <div className="accordian  w-1/2  p-3 border-l-2 border-yellow-500 mt-3">
+                    {data.map((item, i) => (
+                        <div className="main w-f mb-2 mt-1.5 border-b border-black" key={i}>
+                            <div className="title h-10 text-yellow-500 flex justify-between items-center cursor-pointer" onClick={() => toggle(i)}>
+                                <h2 className="font-semibold text-xl">{item.question}</h2>
+                                <span>{selected == i ? '<' : '>'}</span>
                             </div>
-                        ))}
-                    </div>
+                            <div className={selected == i ? 'content text-gray-500 font-serif font-bold transition-max-height duration-500 ease-in-out' : 'content max-h-0 overflow-hidden transition-max-height duration-500 ease-in-out'}>{item.answer}</div>
+                        </div>
+                    ))}
                 </div>
-
             </div>
+        </div>
 
-        </Layout>
     );
 }
 
