@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./../Layout/Layout";
+
 import { FaFilter } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
@@ -49,7 +49,7 @@ const Home = () => {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <Layout>
+   
       <div className="home-container py-[10rem]">
         {/* Navbar */}
         <nav className="fixed top-[4rem] left-0 w-full bg-gray-800 text-white z-10 flex justify-between items-center px-10 py-4">
@@ -80,7 +80,7 @@ const Home = () => {
                 <option value="Mountain">Mountain</option>
                 <option value="Road">Road</option>
                 <option value="Hybrid">Hybrid</option>
-                {/* Add more category options as needed */}
+               
               </select>
             </div>
             <div className="flex gap-4 text-sm items-center justify-between">
@@ -99,7 +99,7 @@ const Home = () => {
                 <option value="4000">Rs. 4000</option>
                 <option value="5000">Rs. 5000</option>
                 <option value="6000">Rs. 6000</option>
-                {/* Add more price options as needed */}
+              
               </select>
               <span>to</span>
               <select
@@ -129,7 +129,7 @@ const Home = () => {
                 <option value="">All</option>
                 <option value="New">New</option>
                 <option value="Used">Used</option>
-                {/* Add more condition options as needed */}
+               
               </select>
             </div>
             <div className="flex gap-4 text-sm items-center justify-between">
@@ -144,10 +144,10 @@ const Home = () => {
                 <option value="City A">City A</option>
                 <option value="City B">City B</option>
                 <option value="City C">City C</option>
-                {/* Add more location options as needed */}
+                
               </select>
             </div>
-            {/* Add more filter options as needed */}
+          
           </div>
         )}
 
@@ -203,7 +203,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-    </Layout>
+  
   );
 };
 

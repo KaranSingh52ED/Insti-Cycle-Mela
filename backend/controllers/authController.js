@@ -1,9 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const User = require("../Models/User");
+const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const multer = require("multer");
 const cloudinary = require("cloudinary");
+const fs = require("fs");
 
 dotenv.config();
 
@@ -14,16 +15,15 @@ var upload = multer({
   storage: storage,
 });
 
-//Signup Route
+// Signup Route
 const signup = async (req, res) => {
   try {
     const { firstName, lastName, userEmail, userMobile, userName } = req.body;
 
     // If current user exists
-
     const existingUser = await User.findOne({ userEmail });
     if (existingUser) {
-      res.status(401).send("User Already Exists with this email");
+      return res.status(401).send("User Already Exists with this email");
     }
 
     // Check if file is provided
@@ -31,6 +31,7 @@ const signup = async (req, res) => {
       return res.status(400).json({ error: "No Profile Image Provided" });
     }
 
+    // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
     console.log(result);
 
@@ -38,7 +39,6 @@ const signup = async (req, res) => {
     const saltRounds = 10;
 
     const salt = await bcrypt.genSalt(saltRounds);
-
     const encryptedPassword = await bcrypt.hash(password, salt);
     console.log("Request Body: ", req.body);
 
@@ -49,6 +49,7 @@ const signup = async (req, res) => {
       userMobile,
       userName,
       userPassword: encryptedPassword,
+      profileImageUrl: result.secure_url, // Save the URL from Cloudinary
     });
 
     await newUser.save();
@@ -76,7 +77,10 @@ const login = async (req, res) => {
         user.userPassword
       );
       if (passwordMatch) {
-        return res.json(user);
+        return res.json({
+          status: "Ok",
+          user: user,
+        });
       } else {
         return res.json({ status: "Error", getUser: false });
       }

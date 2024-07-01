@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const authController = require("./../controllers/authController");
+const authController = require("../controllers/authController");
 const multer = require("multer");
 const dotenv = require("dotenv");
 const cloudinary = require("cloudinary");
+const fs = require("fs");
+const path = require("path");
 
 dotenv.config();
 
@@ -13,14 +15,19 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Ensure the images directory exists
+const imagesDir = path.join(__dirname, "../images");
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir);
+}
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const destinationPath = "./images";
-    cb(null, destinationPath);
+    cb(null, imagesDir);
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now();
-    cb(null, uniqueSuffix + file.originalname);
+    const uniqueSuffix = Date.now() + path.extname(file.originalname);
+    cb(null, uniqueSuffix);
   },
 });
 

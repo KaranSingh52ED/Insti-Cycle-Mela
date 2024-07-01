@@ -9,10 +9,10 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-
   userEmail: {
     type: String,
     required: true,
+    unique: true,
   },
   userMobile: {
     type: Number,
@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   userPassword: {
+    type: String,
+    required: true,
+  },
+  profileImageUrl: {
     type: String,
     required: true,
   },
