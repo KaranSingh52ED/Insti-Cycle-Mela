@@ -2,13 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./config/db");
-require("dotenv").config();
+const dotenv = require("dotenv");
+
 const bicycleRoutes = require("./routes/bicycleRoutes");
 const userRoutes = require("./routes/userRoute");
 
 const jwt = require("jsonwebtoken");
 
 const app = express();
+dotenv.config();
 connectDB();
 
 /*
@@ -31,7 +33,14 @@ to run use : npm run dev
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Server Is Running");
+});
+app.post("/api/bicycles", (req, res) => {
+  res.status(200).send("Bicycle data received");
+});
 // Routes
 app.use("/api", bicycleRoutes);
 app.use("/api/auth", userRoutes);

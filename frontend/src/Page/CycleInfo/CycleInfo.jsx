@@ -1,11 +1,12 @@
 import React from 'react'
+import Layout from './../Layout/Layout';
 
 const CycleInfo = () => {
-    return (
-        <div>
-            CycleInfo Page
-        </div>
-    )
+  return (
+    <Layout>
+
+    </Layout>
+  )
 }
 
 export default CycleInfo
