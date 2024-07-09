@@ -34,7 +34,9 @@ const BicycleForm = () => {
             .then((response) => {
                 setSubmitted(true);
                 // Update state with response data, if needed
-                console.log(response.data);
+                console.log("response data ->>")
+                console.log("this is the data : ", response.data);
+                console.log("<<-")
             })
             .catch((error) => {
                 console.error(error);

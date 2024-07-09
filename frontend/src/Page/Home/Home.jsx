@@ -25,6 +25,7 @@ const Home = () => {
       if (response.data && Array.isArray(response.data.bicycles)) {
         setBicycles(response.data.bicycles);
         setTotal(response.data.total);
+        //console.log(response.data.bicycles);
       } else {
         console.error("Expected an array of bicycles in response");
       }

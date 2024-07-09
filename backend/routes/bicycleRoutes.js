@@ -4,17 +4,20 @@ const BicycleController = require("../controllers/bicycleController");
 const upload = require("../middleware/upload");
 
 router.post(
-  "/api/bicycles",
+  "/bicycles",
   upload.array("images", 12),
   BicycleController.createBicycle
 );
-router.get("/api/bicycles", BicycleController.getBicycles);
-router.get("/api/bicycles/:id", BicycleController.getBicycle);
+router.get("/bicycles", BicycleController.getBicycles);
+router.get("/bicycles/:id", BicycleController.getBicycle);
 router.put(
-  "/api/bicycles/:id",
+  "/bicycles/:id",
   upload.array("images", 12),
   BicycleController.updateBicycle
 );
-router.delete("/api/bicycles/:id", BicycleController.deleteBicycle);
+router.delete("/bicycles/:id", BicycleController.deleteBicycle);
+
+//for test purpose: 
+router.post("/add-multiple", BicycleController.addBicycles);
 
 module.exports = router;

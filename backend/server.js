@@ -38,9 +38,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Server Is Running");
 });
-app.post("/api/bicycles", (req, res) => {
-  res.status(200).send("Bicycle data received");
-});
+// app.post("/api/bicycles", (req, res) => {
+//   res.status(200).send("Bicycle data received");
+// });
 // Routes
 app.use("/api", bicycleRoutes);
 app.use("/api/auth", userRoutes);
