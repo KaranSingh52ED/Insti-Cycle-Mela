@@ -9,7 +9,7 @@ import Team from './components/Team/Team';
 import CycleInfo from './Page/CycleInfo/CycleInfo';
 import Login from '../src/Page/auth/Login';
 import Signup from '../src/Page/auth/SignUp';
-// import ProtectRouter from './components/ProtectedRoute/ProtectedRoute';
+import ProtectRouter from './components/ProtectedRoute/ProtectedRoute';
 import Layout from './Page/Layout/Layout';
 import BicycleForm from './Page/BicycleInput/BicycleInput';
 const App = () => {

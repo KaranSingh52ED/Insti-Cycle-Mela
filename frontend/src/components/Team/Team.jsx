@@ -21,50 +21,50 @@ function Team() {
     ];
 
     return (
-        <Layout>
-            <div className="container mx-auto my-24 p-4 pt-6 md:p-6 lg:p-12">
-                <h1 className="text-3xl font-bold mb-4">Our Team</h1>
-                <section className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4">Core Team</h2>
-                    <ul className="flex flex-wrap justify-center">
-                        {coreTeam.map((member) => (
-                            <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-                                <div className="bg-white rounded shadow-md p-4">
-                                    <h3 className="text-lg font-bold">{member.name}</h3>
-                                    <p className="text-gray-600">{member.description}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-                <section className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4">Super Coordinators</h2>
-                    <ul className="flex flex-wrap justify-center">
-                        {superCoordinators.map((member) => (
-                            <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-                                <div className="bg-white rounded shadow-md p-4">
-                                    <h3 className="text-lg font-bold">{member.name}</h3>
-                                    <p className="text-gray-600">{member.description}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-                <section className="mb-12">
-                    <h2 className="text-2xl font-bold mb-4">Coordinators</h2>
-                    <ul className="flex flex-wrap justify-center">
-                        {coordinators.map((member) => (
-                            <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-                                <div className="bg-white rounded shadow-md p-4">
-                                    <h3 className="text-lg font-bold">{member.name}</h3>
-                                    <p className="text-gray-600">{member.description}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-            </div>
-        </Layout>
+
+        <div className="container mx-auto my-24 p-4 pt-6 md:p-6 lg:p-12">
+            <h1 className="text-3xl font-bold mb-4">Our Team</h1>
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold mb-4">Core Team</h2>
+                <ul className="flex flex-wrap justify-center">
+                    {coreTeam.map((member) => (
+                        <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+                            <div className="bg-white rounded shadow-md p-4">
+                                <h3 className="text-lg font-bold">{member.name}</h3>
+                                <p className="text-gray-600">{member.description}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold mb-4">Super Coordinators</h2>
+                <ul className="flex flex-wrap justify-center">
+                    {superCoordinators.map((member) => (
+                        <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+                            <div className="bg-white rounded shadow-md p-4">
+                                <h3 className="text-lg font-bold">{member.name}</h3>
+                                <p className="text-gray-600">{member.description}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold mb-4">Coordinators</h2>
+                <ul className="flex flex-wrap justify-center">
+                    {coordinators.map((member) => (
+                        <li key={member.id} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
+                            <div className="bg-white rounded shadow-md p-4">
+                                <h3 className="text-lg font-bold">{member.name}</h3>
+                                <p className="text-gray-600">{member.description}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+        </div>
+
     );
 }
 
