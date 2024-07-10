@@ -176,7 +176,7 @@ const Home = () => {
             className="border border-gray-400 p-2 rounded text-black w-72 flex flex-col gap-2 bg-white hover:border-black cursor-pointer"
           >
             <img
-              src={bicycle.image}
+              src={bicycle.images[0]}
               alt={bicycle.description}
               className="w-full h-40 bg-blue-500 rounded object-cover"
             />
