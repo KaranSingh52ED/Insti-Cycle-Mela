@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+    cb(null, file.originalname);
   },
 });
 
@@ -36,7 +36,7 @@ exports.createBicycle = asyncHandler(async (req, res, next) => {
     description,
     price,
     condition,
-    images,
+    images: [image],
   });
   try {
     await bicycle.save();

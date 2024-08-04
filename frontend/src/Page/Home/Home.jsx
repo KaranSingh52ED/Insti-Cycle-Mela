@@ -176,7 +176,7 @@ const Home = () => {
             className="border border-gray-400 p-2 rounded text-black w-72 flex flex-col gap-2 bg-white hover:border-black cursor-pointer"
           >
             <img
-              src="https://img.freepik.com/free-photo/red-light-round-podium-black-background-mock-up_43614-950.jpg?t=st=1722608814~exp=1722612414~hmac=acc1034191cfb9976c75b87493aef3e2ef8ccbbd815f919a48ba3f1b9b4c5d87&w=740"
+              src={`/uploads/${bicycle.images[0]}`}
               alt={bicycle.description}
               className="w-full h-40 bg-blue-500 rounded object-cover"
             />
