@@ -1,18 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const Bicycle = require("../models/Bicycle");
-const multer = require("multer");
+const { v4: uuidv4 } = require("uuid");
+const fs = require("fs");
 const path = require("path");
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-
-const upload = multer({ storage });
 
 exports.createBicycle = asyncHandler(async (req, res, next) => {
   const {
@@ -26,7 +16,12 @@ exports.createBicycle = asyncHandler(async (req, res, next) => {
     condition,
   } = req.body;
   const files = req.files;
-  const images = files.map((file) => file.path);
+  const images = files.map((file) => {
+    const filename = uuidv4() + "-" + file.originalname;
+    const filepath = path.join(__dirname, "../uploads", filename);
+    fs.renameSync(file.path, filepath);
+    return filename;
+  });
   const bicycle = new Bicycle({
     name,
     email,
@@ -36,13 +31,11 @@ exports.createBicycle = asyncHandler(async (req, res, next) => {
     description,
     price,
     condition,
-    images: [image],
+    images,
   });
   try {
     await bicycle.save();
-    res
-      .status(201)
-      .send({ message: " so Bicycle has been created successfully" });
+    res.status(201).send({ message: "Bicycle has been created successfully" });
   } catch (error) {
     res.status(400).send({ message: "Error creating bicycle", error });
   }
@@ -109,7 +102,12 @@ exports.updateBicycle = asyncHandler(async (req, res, next) => {
     condition,
   } = req.body;
   const files = req.files;
-  const images = files.map((file) => file.path);
+  const images = files.map((file) => {
+    const filename = uuidv4() + "-" + file.originalname;
+    const filepath = path.join(__dirname, "../uploads", filename);
+    fs.renameSync(file.path, filepath);
+    return filename;
+  });
   const bicycle = await Bicycle.findByIdAndUpdate(
     id,
     {
@@ -152,5 +150,31 @@ exports.addBicycles = async (req, res) => {
     res.status(201).send(result);
   } catch (err) {
     res.status(500).send("Server Error");
+  }
+};
+exports.getImages = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const bicycle = await Bicycle.findById(id).exec();
+    if (!bicycle) {
+      return res.status(404).send({ message: "Bicycle not found" });
+    }
+    const images = bicycle.images;
+    const imagePath = path.join(__dirname, "../uploads");
+
+    // Check if images exist on the file system
+    const existingImages = images.filter((image) =>
+      fs.existsSync(path.join(imagePath, image))
+    );
+
+    // Return the full path to the images
+    const imageUrls = existingImages.map(
+      (image) => `${req.protocol}://${req.get("host")}/uploads/${image}`
+    );
+
+    res.json(imageUrls);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Error retrieving images" });
   }
 };

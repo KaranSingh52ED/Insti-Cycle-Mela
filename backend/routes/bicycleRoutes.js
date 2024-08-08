@@ -17,7 +17,9 @@ router.put(
 );
 router.delete("/bicycles/:id", BicycleController.deleteBicycle);
 
-//for test purpose: 
+//for test purpose:
 router.post("/add-multiple", BicycleController.addBicycles);
+
+router.get("/images/:id", BicycleController.getImages);
 
 module.exports = router;

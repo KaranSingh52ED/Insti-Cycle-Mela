@@ -7,7 +7,13 @@ import axios from "axios";
 const Home = () => {
   const [active, setActive] = useState(false);
   const [bicycles, setBicycles] = useState([]);
-  const [filters, setFilters] = useState({ category: "", minPrice: "", maxPrice: "", condition: "", location: "" });
+  const [filters, setFilters] = useState({
+    category: "",
+    minPrice: "",
+    maxPrice: "",
+    condition: "",
+    location: "",
+  });
   const [sort, setSort] = useState("dateAdded:desc");
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -50,13 +56,11 @@ const Home = () => {
   const totalPages = Math.ceil(total / limit);
 
   return (
-
     <div className="home-container py-[10rem]">
       {/* Navbar */}
       <nav className="fixed top-[4rem] left-0 w-full bg-gray-800 text-white z-10 flex justify-between items-center px-10 py-4">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-semibold">Cycle Mela</h1>
-
         </div>
         <FaFilter
           className="h-7 w-7 cursor-pointer"
@@ -81,7 +85,6 @@ const Home = () => {
               <option value="Mountain">Mountain</option>
               <option value="Road">Road</option>
               <option value="Hybrid">Hybrid</option>
-
             </select>
           </div>
           <div className="flex gap-4 text-sm items-center justify-between">
@@ -100,7 +103,6 @@ const Home = () => {
               <option value="4000">Rs. 4000</option>
               <option value="5000">Rs. 5000</option>
               <option value="6000">Rs. 6000</option>
-
             </select>
             <span>to</span>
             <select
@@ -130,7 +132,6 @@ const Home = () => {
               <option value="">All</option>
               <option value="New">New</option>
               <option value="Used">Used</option>
-
             </select>
           </div>
           <div className="flex gap-4 text-sm items-center justify-between">
@@ -145,10 +146,8 @@ const Home = () => {
               <option value="City A">City A</option>
               <option value="City B">City B</option>
               <option value="City C">City C</option>
-
             </select>
           </div>
-
         </div>
       )}
 
@@ -156,8 +155,7 @@ const Home = () => {
       <div className="flex justify-center items-center p-4">
         <span className="font-bold mr-2">Sort By:</span>
         <select
-          className
-          ="rounded bg-gray-100 p-2"
+          className="rounded bg-gray-100 p-2"
           onChange={handleSortChange}
           value={sort}
         >
@@ -176,7 +174,7 @@ const Home = () => {
             className="border border-gray-400 p-2 rounded text-black w-72 flex flex-col gap-2 bg-white hover:border-black cursor-pointer"
           >
             <img
-              src={`/uploads/${bicycle.images[0]}`}
+              src={`http://localhost:8080/uploads/${bicycle.images[0]}`}
               alt={bicycle.description}
               className="w-full h-40 bg-blue-500 rounded object-cover"
             />
@@ -195,8 +193,9 @@ const Home = () => {
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
-            className={`mx-2 px-4 py-2 border rounded ${page === index + 1 ? "bg-gray-300" : "bg-white"
-              }`}
+            className={`mx-2 px-4 py-2 border rounded ${
+              page === index + 1 ? "bg-gray-300" : "bg-white"
+            }`}
             onClick={() => handlePageChange(index + 1)}
           >
             {index + 1}
@@ -204,7 +203,6 @@ const Home = () => {
         ))}
       </div>
     </div>
-
   );
 };
 
