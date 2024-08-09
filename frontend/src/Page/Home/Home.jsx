@@ -183,7 +183,10 @@ const Home = () => {
                 className="w-full h-40 bg-blue-500 rounded object-cover"
               />
             </Link>
-            <div className="h-28">
+            <div className="h-32">
+              <h1 className="text-lg font-serif text-slate-700">
+                {bicycle.title}{" "}
+              </h1>
               <div className="font-semibold font-serif flex justify-between items-center text-xl">
                 {`₹${bicycle.price}`}{" "}
                 <span className="text-sm  ">{`Condition: ${bicycle.condition}`}</span>{" "}
