@@ -1,13 +1,20 @@
 const mongoose = require("mongoose");
 
-const BicycleSchema = new mongoose.Schema({
-  category: String,
-  price: Number,
-  condition: String,
-  location: String,
-  image: String,
-  description: String,
-  dateAdded: { type: Date, default: Date.now },
-});
+const bicycleSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    gender: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    condition: { type: String, required: true },
+    images: [{ type: String, required: true }],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model("Bicycle", BicycleSchema);
+module.exports = mongoose.model("Bicycle", bicycleSchema);
