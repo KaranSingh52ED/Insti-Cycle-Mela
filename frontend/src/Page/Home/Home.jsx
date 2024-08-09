@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaFilter } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [active, setActive] = useState(false);
@@ -173,11 +174,15 @@ const Home = () => {
             key={bicycle._id}
             className="border border-gray-400 p-2 rounded text-black w-72 flex flex-col gap-2 bg-white hover:border-black cursor-pointer"
           >
-            <img
-              src={`http://localhost:8080/uploads/${bicycle.images[0]}`}
-              alt={bicycle.description}
-              className="w-full h-40 bg-blue-500 rounded object-cover"
-            />
+            <Link
+              to={{ pathname: `/bicycle/${bicycle._id}`, state: { bicycle } }}
+            >
+              <img
+                src={`http://localhost:8080/uploads/${bicycle.images[0]}`}
+                alt={bicycle.description}
+                className="w-full h-40 bg-blue-500 rounded object-cover"
+              />
+            </Link>
             <div className="h-32">
               <div className="font-bold text-xl">{`Rs.${bicycle.price}`}</div>
               <div className="text-sm">{bicycle.description}</div>
