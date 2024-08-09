@@ -183,9 +183,15 @@ const Home = () => {
                 className="w-full h-40 bg-blue-500 rounded object-cover"
               />
             </Link>
-            <div className="h-32">
-              <div className="font-bold text-xl">{`Rs.${bicycle.price}`} <span>{`Condition: ${bicycle.condition}`}</ </div>
-              <div className="text-sm">{bicycle.description}</div>
+            <div className="h-28">
+              <div className="font-semibold font-serif flex justify-between items-center text-xl">
+                {`₹${bicycle.price}`}{" "}
+                <span className="text-sm  ">{`Condition: ${bicycle.condition}`}</span>{" "}
+              </div>
+              <div className="text-sm">
+                {bicycle.description.slice(0, 150) +
+                  (bicycle.description.length > 150 ? "..." : "")}
+              </div>
               {/* <div className="text-gray-500">{`Location: ${bicycle.location}`}</div> */}
             </div>
           </div>
