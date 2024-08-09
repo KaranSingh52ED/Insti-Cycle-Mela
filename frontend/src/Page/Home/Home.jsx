@@ -184,10 +184,9 @@ const Home = () => {
               />
             </Link>
             <div className="h-32">
-              <div className="font-bold text-xl">{`Rs.${bicycle.price}`}</div>
+              <div className="font-bold text-xl">{`Rs.${bicycle.price}`} <span>{`Condition: ${bicycle.condition}`}</ </div>
               <div className="text-sm">{bicycle.description}</div>
-              <div className="text-sm">{`Condition: ${bicycle.condition}`}</div>
-              <div className="text-gray-500">{`Location: ${bicycle.location}`}</div>
+              {/* <div className="text-gray-500">{`Location: ${bicycle.location}`}</div> */}
             </div>
           </div>
         ))}
