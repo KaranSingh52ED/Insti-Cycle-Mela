@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { backendUrl } from '../../config';
+import { backendUrl } from "../../config";
 const BicycleForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +30,7 @@ const BicycleForm = () => {
     }
 
     axios
-      .post("http://localhost:8080/api/bicycles", formData, {
+      .post(`${backendUrl}/api/bicycles`, formData, {
         headers: {
           "Content-Type": "ultipart/form-data",
         },

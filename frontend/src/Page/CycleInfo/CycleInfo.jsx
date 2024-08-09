@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { backendUrl } from "../../config";
 const CycleInfo = () => {
   const { _id } = useParams();
   const [bicycle, setBicycle] = useState(null);
@@ -10,12 +10,10 @@ const CycleInfo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8080/api/bicycles/${_id}`
-        );
+        const response = await fetch(`${backendUrl}/api/bicycles/${_id}`);
         const data = await response.json();
         setBicycle(data);
-        setActiveImage(`http://localhost:8080/uploads/${data.images[0]}`);
+        setActiveImage(`${backendUrl}/uploads/${data.images[0]}`);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,12 +36,10 @@ const CycleInfo = () => {
           {bicycle.images.map((image, index) => (
             <img
               key={index}
-              src={`http://localhost:8080/uploads/${bicycle.images[index]}`}
+              src={`${backendUrl}/uploads/${bicycle.images[index]}`}
               alt={`bicycle ${index + 1}`}
               className="w-24 h-24 rounded-md  ring-1 ring-slate-700 hover:shadow-md m-4 transform transition-shadow  hover:shadow-black duration-500 ease-in-out shadow-xl  cursor-pointer "
-              onClick={() =>
-                setActiveImage(`http://localhost:8080/uploads/${image}`)
-              }
+              onClick={() => setActiveImage(`${backendUrl}/uploads/${image}`)}
             />
           ))}
         </div>
