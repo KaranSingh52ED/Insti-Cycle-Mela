@@ -59,10 +59,10 @@ const CycleInfo = () => {
               {bicycle.condition}
             </b>
           </span>
-          <span>
-            Gender:-{" "}
+          {/* <span>
+            Bicycle Type:-{" "}
             <b className=" text-slate-600 font-semibold">{bicycle.gender}</b>
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-row space-x-10">
           <h1 className="text-3xl font-bold">{bicycle.title}</h1>

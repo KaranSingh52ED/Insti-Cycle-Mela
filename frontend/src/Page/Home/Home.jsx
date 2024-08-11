@@ -13,7 +13,6 @@ const Home = () => {
     minPrice: "",
     maxPrice: "",
     condition: "",
-    location: "",
   });
   const [sort, setSort] = useState("dateAdded:desc");
   const [page, setPage] = useState(1);
@@ -130,12 +129,14 @@ const Home = () => {
               onChange={handleFilterChange}
               value={filters.condition}
             >
-              <option value="">All</option>
-              <option value="New">New</option>
-              <option value="Used">Used</option>
+              <option value="new">New</option>
+              <option value="like_new">Like New</option>
+              <option value="good">Good</option>
+              <option value="fair">Fair</option>
+              <option value="poor">Poor</option>
             </select>
           </div>
-          <div className="flex gap-4 text-sm items-center justify-between">
+          {/* <div className="flex gap-4 text-sm items-center justify-between">
             <span className="font-bold">Location:</span>
             <select
               name="location"
@@ -148,7 +149,7 @@ const Home = () => {
               <option value="City B">City B</option>
               <option value="City C">City C</option>
             </select>
-          </div>
+          </div> */}
         </div>
       )}
 

@@ -107,7 +107,7 @@ const BicycleForm = () => {
             </p>
             <button
               onClick={handleReset}
-              className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+              className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-800"
             >
               List Another Bicycle
             </button>
@@ -291,7 +291,7 @@ const BicycleForm = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600"
+              className="w-full bg-slate-800 text-white py-2 rounded-md hover:bg-slate-500"
             >
               Submit
             </button>
