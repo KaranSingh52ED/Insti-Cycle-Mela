@@ -11,8 +11,8 @@ const ContactUs = () => {
             <div className="flex flex-col items-center">
                 <div className="mb-10 text-left w-full max-w-lg">
                     <h3 className="text-xl mb-4">Contact Information:</h3>
-                    <p className="mb-2">Email: example@example.com</p>
-                    <p className="mb-2">Phone: (123) 456-7890</p>
+                    <p className="mb-2">Email: webops@smail.iitm.ac.in</p>
+                    <p className="mb-2">Phone: 8002860787</p>
                     <p className="mb-2">Address: 1234 Example St, City, Country</p>
                 </div>
                 <form className="w-full max-w-lg bg-gray-100 p-8 rounded-lg shadow-md">
