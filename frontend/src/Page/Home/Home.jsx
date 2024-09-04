@@ -5,6 +5,7 @@ import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { backendUrl } from "../../config";
+import { MdDeleteForever } from "react-icons/md";
 const Home = () => {
   const [active, setActive] = useState(false);
   const [bicycles, setBicycles] = useState([]);
@@ -60,7 +61,7 @@ const Home = () => {
       {/* Navbar */}
       <nav className="fixed top-[4rem] left-0 w-full bg-gray-800 text-white z-10 flex justify-between items-center px-10 py-4">
         <div className="flex items-center gap-4">
-          <h1 className="text-lg font-semibold">Cycle Mela</h1>
+          <h1 className="text-lg font-semibold">Buy & Sell Portal</h1>
         </div>
         <FaFilter
           className="h-7 w-7 cursor-pointer"
@@ -196,7 +197,6 @@ const Home = () => {
                 {bicycle.description.slice(0, 150) +
                   (bicycle.description.length > 150 ? "..." : "")}
               </div>
-              {/* <div className="text-gray-500">{`Location: ${bicycle.location}`}</div> */}
             </div>
           </div>
         ))}

@@ -47,7 +47,7 @@ const CycleInfo = () => {
       {/* ABOUT */}
       <div className="flex flex-col  gap-4 lg:w-2/4 md:w-full">
         <div className="flex  justify-center ">
-          <h1 className="lg:text-4xl md:text-3xl p-2  font-bold border-2 rounded-lg w-72 my-10  shadow-lg shadow-black hover:translate-x-2  font-serif hover:rotate-3 hover:shadow-blue-500 text-center ">
+          <h1 className="lg:text-4xl md:text-3xl p-2  font-bold border-2 rounded-lg w-72 my-10  shadow-lg shadow-slate-700 hover:translate-x-2  font-serif hover:rotate-3 hover:shadow-black text-center ">
             {" "}
             Product Info
           </h1>
@@ -67,7 +67,7 @@ const CycleInfo = () => {
         <div className="flex flex-row space-x-10">
           <h1 className="text-3xl font-bold">{bicycle.title}</h1>
           <h6 className="text-2xl font-semibold">
-            Price: <b className="text-red-600"> ₹{bicycle.price} </b>
+            Price: <b className="text-slate-600"> ₹{bicycle.price} </b>
           </h6>
         </div>
         <hr />

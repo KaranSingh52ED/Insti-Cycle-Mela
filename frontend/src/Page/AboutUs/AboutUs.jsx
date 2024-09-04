@@ -7,13 +7,13 @@ const AboutUs = () => {
       <h1 className="text-3xl font-bold mb-8">About Us</h1>
       <img
         src="../../../src/assets/cycle.jpg"
-        alt="Cycle Mela"
+        alt="Buy & Sell"
         className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 h-auto rounded-lg mx-auto"
       />
       <div className="w-full bg-gray-100 p-8 rounded-lg shadow-md mb-8 md:mb-12 lg:mb-16 xl:mb-20">
         <section className="flex flex-col md:flex-row items-center mb-8">
           <div className="flex-1 pr-0 md:pr-6 mb-6 md:mb-0">
-            <h2 className="text-2xl font-semibold mb-4">Cycle Mela</h2>
+            <h2 className="text-2xl font-semibold mb-4">Buy & Sell Portal</h2>
             <p className="text-gray-700 text-lg md:text-base leading-relaxed">
               Cycles are an integral part of life at IIT Madras, facilitating
               quick and convenient commuting across our expansive campus.

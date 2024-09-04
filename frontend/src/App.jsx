@@ -25,7 +25,10 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/bicycle/:_id" element={<CycleInfo />} />
-          <Route path="/sell" element={<BicycleForm />} />
+          <Route
+            path="/sell"
+            element={<ProtectRouter component={BicycleForm} />}
+          />
         </Routes>
       </Layout>
     </Router>
