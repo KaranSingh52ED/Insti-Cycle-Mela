@@ -180,7 +180,7 @@ const Home = () => {
               to={{ pathname: `/bicycle/${bicycle._id}`, state: { bicycle } }}
             >
               <img
-                src={`${backendUrl}/uploads/${bicycle.images[0]}`}
+                src={bicycle.images[0]}
                 alt={bicycle.description}
                 className="w-full h-40 bg-blue-500 rounded object-cover"
               />

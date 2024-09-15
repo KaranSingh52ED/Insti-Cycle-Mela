@@ -13,7 +13,7 @@ const CycleInfo = () => {
         const response = await fetch(`${backendUrl}/api/bicycles/${_id}`);
         const data = await response.json();
         setBicycle(data);
-        setActiveImage(`${backendUrl}/uploads/${data.images[0]}`);
+        setActiveImage(data.images[0]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -36,10 +36,10 @@ const CycleInfo = () => {
           {bicycle.images.map((image, index) => (
             <img
               key={index}
-              src={`${backendUrl}/uploads/${bicycle.images[index]}`}
+              src={bicycle.images[index]}
               alt={`bicycle ${index + 1}`}
               className="w-24 h-24 rounded-md  ring-1 ring-slate-700 hover:shadow-md m-4 transform transition-shadow  hover:shadow-black duration-500 ease-in-out shadow-xl  cursor-pointer "
-              onClick={() => setActiveImage(`${backendUrl}/uploads/${image}`)}
+              onClick={() => setActiveImage(image)}
             />
           ))}
         </div>
