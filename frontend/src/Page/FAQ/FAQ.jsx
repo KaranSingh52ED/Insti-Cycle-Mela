@@ -48,7 +48,7 @@ function Neck() {
 
 const data = [
   {
-    question: "What should I look for when buying a used bicycle?",
+    question: "What should I look for when buying a used product?",
     answer:
       'Check the overall condition of the bike, including the frame, tires, brakes, and gears. If possible, arrange to see the bike in person and take it for a test ride. Don"t hesitate to ask the seller about the bike"s history and any maintenance it has undergone.',
   },
@@ -58,12 +58,12 @@ const data = [
       "Each listing includes a contact form to reach the seller directly. Fill out the form with your inquiry, and the seller will respond to arrange a meeting or provide more information.",
   },
   {
-    question: "How do I list my bicycle for sale?",
+    question: "How do I list my product for sale?",
     answer:
-      'To list your bicycle, log in to your account and go to the "Sell a Bicycle" section. Fill out the listing form with details about your bike, including photos, description, price, and contact information. Your listing will be reviewed and published within 24 hours.',
+      'To list your product, log in to your account and go to the "Sell" section. Fill out the listing form with details about your bike, including photos, description, price, and contact information. Your listing will be reviewed and published within 24 hours.',
   },
   {
-    question: " How should I price my bicycle?",
+    question: " How should I price my product?",
     answer:
       " Consider the age, condition, and original price of the bike. Research similar listings on the platform to gauge a competitive price. Be honest about the bike’s condition to ensure a fair deal for both parties.",
   },
@@ -75,7 +75,7 @@ const data = [
   {
     question: "How do I ensure a safe transaction?",
     answer:
-      " Always meet in a public place, preferably on campus, to exchange the bicycle and payment. Avoid sharing personal information beyond what’s necessary for the transaction. Consider bringing a friend along for added safety.",
+      " Always meet in a public place, preferably on campus, to exchange the product and payment. Avoid sharing personal information beyond what’s necessary for the transaction. Consider bringing a friend along for added safety.",
   },
   {
     question: "What payment methods are recommended?",
@@ -93,9 +93,9 @@ const data = [
       'You can sign up using your college email address. Simply click on the "Sign Up" button on the homepage, enter your details, and verify your email to get started.',
   },
   {
-    question: "How do I find a bicycle to buy?",
+    question: "How do I find a product to buy?",
     answer:
-      'Browse the listings by visiting the "Buy a Bicycle" section. You can filter the results by price, type, condition, and location to find the perfect bike for your needs',
+      'Browse the listings by visiting the "Buy Product" section. You can filter the results by price, type, condition, and location to find the perfect bike for your needs',
   },
 ];
 

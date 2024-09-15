@@ -24,7 +24,7 @@ const Navbar = () => {
       <form className="flex bg-black justify-center border-2 border-black  items-center w-1/2 sm:rounded fixed top-16 w-full sm:static left-0">
         <input
           type="search"
-          placeholder="Find cycles at your budget.."
+          placeholder="Find items at your budget.."
           className="p-3 border-2 w-full border-none outline-none rounded-l"
         />
         <button

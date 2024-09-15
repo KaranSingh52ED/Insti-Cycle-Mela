@@ -76,12 +76,12 @@ const BicycleForm = () => {
           </li>
           <li className="mb-2">
             <strong>Description:</strong> Provide detailed information about the
-            bicycle. Include its specifications, usage history, and any
-            accessories that come with it.
+            item. Include its specifications, usage history, and any accessories
+            that come with it.
           </li>
           <li className="mb-2">
             <strong>Price:</strong> Research similar listings to price your
-            bicycle competitively. Be realistic about the value based on its
+            items competitively. Be realistic about the value based on its
             condition.
           </li>
           <li className="mb-2">
@@ -90,8 +90,8 @@ const BicycleForm = () => {
           </li>
           <li className="mb-2">
             <strong>Photos:</strong> Take clear, well-lit photos from multiple
-            angles. Highlight any special features or flaws. Clean your bicycle
-            before taking pictures to make it look its best.
+            angles. Highlight any special features or flaws. Clean your item or
+            product before taking pictures to make it look its best.
           </li>
         </ul>
       </div>
@@ -103,13 +103,13 @@ const BicycleForm = () => {
           <div className="bg-blue-500 text-white text-center py-4" id="Bicycle">
             <h1 className="text-2xl font-bold">Thank You!</h1>
             <p className="text-gray-100 mb-4">
-              Your bicycle has been listed successfully.
+              Your Item has been listed successfully.
             </p>
             <button
               onClick={handleReset}
               className="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-800"
             >
-              List Another Bicycle
+              List Another Items
             </button>
           </div>
         ) : (
