@@ -7,12 +7,17 @@ const dotenv = require("dotenv");
 const bicycleRoutes = require("./routes/bicycleRoutes");
 const userRoutes = require("./routes/userRoute");
 
-const jwt = require("jsonwebtoken");
-
 const app = express();
 dotenv.config();
 connectDB();
 
+// Configure Cloudinary
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 /*
 dot env structure:
 -create .env file in root
@@ -39,9 +44,7 @@ app.use("/uploads", express.static("uploads"));
 app.get("/", (req, res) => {
   res.send("Server Is Running");
 });
-// app.post("/api/bicycles", (req, res) => {
-//   res.status(200).send("Bicycle data received");
-// });
+
 // Routes
 app.use("/api", bicycleRoutes);
 app.use("/api/auth", userRoutes);

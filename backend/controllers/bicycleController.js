@@ -1,8 +1,14 @@
 const asyncHandler = require("express-async-handler");
 const Bicycle = require("../models/Bicycle");
 const { v4: uuidv4 } = require("uuid");
-const fs = require("fs");
-const path = require("path");
+const cloudinary = require("cloudinary").v2;
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 exports.createBicycle = asyncHandler(async (req, res, next) => {
   const {
@@ -15,14 +21,51 @@ exports.createBicycle = asyncHandler(async (req, res, next) => {
     price,
     condition,
   } = req.body;
+
   const files = req.files;
-  const images = files.map((file) => {
-    const filename = uuidv4() + "-" + file.originalname;
-    const filepath = path.join(__dirname, "../uploads", filename);
-    fs.renameSync(file.path, filepath);
-    return filename;
-  });
-  const bicycle = new Bicycle({
+  let images = [];
+
+  try {
+    // Upload each image to Cloudinary
+    for (const file of files) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader.upload_stream(
+          {
+            folder: "bicycles",
+            resource_type: "image",
+            public_id: uuidv4(),
+          },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        ).end(file.buffer);
+      });
+      images.push(result.secure_url); // Store the Cloudinary URL
+    }
+
+    const bicycle = new Bicycle({
+      name,
+      email,
+      phoneNumber,
+      gender,
+      title,
+      description,
+      price,
+      condition,
+      images,
+    });
+
+    await bicycle.save();
+    res.status(201).send({ message: "Bicycle has been created successfully" });
+  } catch (error) {
+    res.status(400).send({ message: "Error creating bicycle", error });
+  }
+});
+
+exports.updateBicycle = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  const {
     name,
     email,
     phoneNumber,
@@ -31,13 +74,54 @@ exports.createBicycle = asyncHandler(async (req, res, next) => {
     description,
     price,
     condition,
-    images,
-  });
+  } = req.body;
+  const files = req.files;
+  let images = [];
+
   try {
-    await bicycle.save();
-    res.status(201).send({ message: "Bicycle has been created successfully" });
+    if (files && files.length > 0) {
+      // Upload new images to Cloudinary
+      for (const file of files) {
+        const result = await new Promise((resolve, reject) => {
+          cloudinary.uploader.upload_stream(
+            {
+              folder: "bicycles",
+              resource_type: "image",
+              public_id: uuidv4(),
+            },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result);
+            }
+          ).end(file.buffer);
+        });
+        images.push(result.secure_url);
+      }
+    }
+
+    const updatedBicycle = await Bicycle.findByIdAndUpdate(
+      id,
+      {
+        name,
+        email,
+        phoneNumber,
+        gender,
+        title,
+        description,
+        price,
+        condition,
+        images: images.length > 0 ? images : undefined, // Update images only if new ones are uploaded
+      },
+      { new: true }
+    ).exec();
+
+    if (!updatedBicycle) {
+      res.status(404).send({ message: "Bicycle not found" });
+    } else {
+      res.send(updatedBicycle);
+    }
   } catch (error) {
-    res.status(400).send({ message: "Error creating bicycle", error });
+    res.status(400).send({ message: "Error updating bicycle", error });
   }
 });
 
@@ -89,92 +173,23 @@ exports.getBicycle = asyncHandler(async (req, res, next) => {
   }
 });
 
-exports.updateBicycle = asyncHandler(async (req, res, next) => {
-  const id = req.params.id;
-  const {
-    name,
-    email,
-    phoneNumber,
-    gender,
-    title,
-    description,
-    price,
-    condition,
-  } = req.body;
-  const files = req.files;
-  const images = files.map((file) => {
-    const filename = uuidv4() + "-" + file.originalname;
-    const filepath = path.join(__dirname, "../uploads", filename);
-    fs.renameSync(file.path, filepath);
-    return filename;
-  });
-  const bicycle = await Bicycle.findByIdAndUpdate(
-    id,
-    {
-      name,
-      email,
-      phoneNumber,
-      gender,
-      title,
-      description,
-      price,
-      condition,
-      images,
-    },
-    { new: true }
-  ).exec();
-  if (!bicycle) {
-    res.status(404).send({ message: "Bicycle not found" });
-  } else {
-    res.send(bicycle);
-  }
-});
-
 exports.deleteBicycle = asyncHandler(async (req, res, next) => {
   const id = req.params.id;
   await Bicycle.findByIdAndRemove(id).exec();
   res.send({ message: "Bicycle deleted successfully" });
 });
 
-//for test purpose:
+// For testing purposes:
 exports.addBicycles = async (req, res) => {
   try {
     const bicycles = req.body;
     if (!Array.isArray(bicycles)) {
-      return res
-        .status(400)
-        .send("Request body should be an array of bicycles");
+      return res.status(400).send("Request body should be an array of bicycles");
     }
 
     const result = await Bicycle.insertMany(bicycles);
     res.status(201).send(result);
   } catch (err) {
     res.status(500).send("Server Error");
-  }
-};
-exports.getImages = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const bicycle = await Bicycle.findById(id).exec();
-    if (!bicycle) {
-      return res.status(404).send({ message: "Bicycle not found" });
-    }
-    const images = bicycle.images;
-    const imagePath = path.join(__dirname, "../uploads");
-
-    // Check if images exist on the file system
-    const existingImages = images.filter((image) =>
-      fs.existsSync(path.join(imagePath, image))
-    );
-
-    // Return the full path to the images
-    const imageUrls = existingImages.map(
-      (image) => `${req.protocol}://${req.get("host")}/uploads/${image}`
-    );
-
-    res.json(imageUrls);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send({ message: "Error retrieving images" });
   }
 };
